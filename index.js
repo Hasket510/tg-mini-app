@@ -1,0 +1,27 @@
+import TelegramBot from 'node-telegram-bot-api'
+
+const token = '6365687589:AAHhr0RSMse_1xzVN_DieRYz7A5FV7ZmbxI'
+
+const webSocketUrl = 'https://hasket510.github.io/TG-mini-app/'
+const weatherUrl = 'https://hasket510.github.io/TG-mini-app/weather'
+const infiniteScrollUrl =
+	'https://hasket510.github.io/TG-mini-app/infiniteScroll'
+
+const bot = new TelegramBot(token, { polling: true })
+
+bot.on('message', async msg => {
+	const chatId = msg.chat.id
+	const text = msg.text
+
+	if (text === '/start') {
+		await bot.sendMessage(chatId, 'Welcome!', {
+			reply_markup: {
+				keyboard: [
+					[{ text: 'Websocket', web_app: { url: webSocketUrl } }],
+					[{ text: 'Weather', web_app: { url: weatherUrl } }],
+					[{ text: 'InfiniteScroll', web_app: { url: infiniteScrollUrl } }],
+				],
+			},
+		})
+	}
+})

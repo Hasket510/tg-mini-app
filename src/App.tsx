@@ -9,12 +9,9 @@ function App() {
 	return (
 		<main className={styles.app}>
 			<Routes>
-				<Route path='/TG-mini-app/' element={<WebSocketScreen />} />
-				<Route path='/TG-mini-app/weather' element={<WeatherScreen />} />
-				<Route
-					path='/TG-mini-app/infiniteScroll'
-					element={<InfiniteScrollScreen />}
-				/>
+				<Route path='/' element={<WebSocketScreen />} />
+				<Route path='/weather' element={<WeatherScreen />} />
+				<Route path='/infiniteScroll' element={<InfiniteScrollScreen />} />
 			</Routes>
 			<Menu />
 		</main>
