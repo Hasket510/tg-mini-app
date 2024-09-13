@@ -4,13 +4,13 @@ import styles from './Menu.module.scss'
 export function Menu() {
 	return (
 		<nav className={styles.nav}>
-			<Link className={styles.button} to='/'>
+			<Link className={styles.button} to='/TG-mini-app/'>
 				Websocket
 			</Link>
-			<Link className={styles.button} to='/weather'>
+			<Link className={styles.button} to='/TG-mini-app/weather'>
 				Weather
 			</Link>
-			<Link className={styles.button} to='/infiniteScroll'>
+			<Link className={styles.button} to='/TG-mini-app/infiniteScroll'>
 				InfiniteScroll
 			</Link>
 		</nav>
