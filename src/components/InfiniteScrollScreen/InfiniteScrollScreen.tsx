@@ -1,41 +1,19 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect } from 'react'
+import { usePostsData } from '../../hooks/usePostsData'
 import styles from './InfiniteScrollScreen.module.scss'
 
-interface IPost {
-	id: number
-	title: string
-	body: string
-}
-
 export function InfiniteScrollScreen() {
-	const [posts, setPosts] = useState<IPost[]>([])
-	const [loading, setLoading] = useState(false)
-
-	const fetchPosts = useCallback(async () => {
-		setLoading(true)
-		try {
-			const response = await fetch(
-				'https://jsonplaceholder.typicode.com/posts?_limit=2'
-			)
-			const data = await response.json()
-
-			setPosts(prevPosts => [...prevPosts, ...data])
-		} catch (error) {
-			console.error('Error fetching posts:', error)
-		} finally {
-			setLoading(false)
-		}
-	}, [])
+	const [posts, isLoading, fetchPosts] = usePostsData()
 
 	useEffect(() => {
 		fetchPosts()
 	}, [fetchPosts])
 
 	const handleLoadMore = useCallback(() => {
-		if (loading) return
+		if (isLoading) return
 
 		fetchPosts()
-	}, [loading, fetchPosts])
+	}, [isLoading, fetchPosts])
 
 	return (
 		<section>
@@ -49,14 +27,14 @@ export function InfiniteScrollScreen() {
 				))}
 			</ul>
 
-			{loading && <p>Loading...</p>}
+			{isLoading && <p>Loading...</p>}
 
 			<button
 				className={styles.button}
 				onClick={handleLoadMore}
-				disabled={loading}
+				disabled={isLoading}
 			>
-				{loading ? 'Loading more...' : 'Load More'}
+				{isLoading ? 'Loading more...' : 'Load More'}
 			</button>
 		</section>
 	)

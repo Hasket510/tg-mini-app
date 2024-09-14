@@ -7,7 +7,7 @@ TG-mini-app with websocket, weather api and infinite scroll.
 1. clone
 
 ```
-git clone https://github.com/Hasket510/TG-mini-app/
+git clone https://github.com/Hasket510/TG-mini-app
 ```
 
 2. go in to project
