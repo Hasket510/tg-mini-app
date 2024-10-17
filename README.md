@@ -7,7 +7,7 @@ TG-mini-app with websocket, weather api and infinite scroll.
 1. clone
 
 ```
-git clone https://github.com/Hasket510/TG-mini-app
+git clone https://github.com/Hasket510/tg-mini-app
 ```
 
 2. go in to project
@@ -30,4 +30,4 @@ npm run dev
 
 ## Deploy
 
-https://hasket510.github.io/TG-mini-app/
+https://hasket510.github.io/tg-mini-app/

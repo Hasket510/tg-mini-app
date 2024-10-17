@@ -5,7 +5,7 @@ import App from './App.tsx'
 
 createRoot(document.getElementById('root')!).render(
 	<StrictMode>
-		<BrowserRouter basename='/TG-mini-app'>
+		<BrowserRouter basename='/tg-mini-app'>
 			<App />
 		</BrowserRouter>
 	</StrictMode>
