@@ -22,7 +22,6 @@ export function useWeatherData() {
 			)
 			.then(resp => {
 				const weatherData = resp.data
-				console.log(weatherData)
 				setData(weatherData)
 			})
 	}, [])
