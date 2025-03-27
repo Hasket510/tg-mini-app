@@ -1,7 +1,14 @@
+import { useEffect, useState } from 'react'
 import { useWeatherData } from '../../hooks/useWeatherData'
+import { getRandomCity } from '../../utils/getRandomCity'
 
 export function WeatherScreen() {
-	const [data] = useWeatherData()
+	const [city, setCity] = useState(getRandomCity())
+	const [data] = useWeatherData(city)
+
+	useEffect(() => {
+		setCity(getRandomCity())
+	}, [])
 
 	const calcTemp = (temp: string) => (Number(temp) - 273.15).toFixed(1)
 

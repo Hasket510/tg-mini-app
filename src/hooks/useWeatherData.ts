@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { city } from '../utils/getRandomCity'
 
 interface IWeatherData {
 	name: string
@@ -9,12 +8,14 @@ interface IWeatherData {
 	}
 }
 
-export function useWeatherData() {
+export function useWeatherData(city: string) {
 	const API_KEY = '046dbace766fa421a5c7d64b7c85e017'
 
 	const [data, setData] = useState<IWeatherData>()
 
 	useEffect(() => {
+		if (!city) return
+
 		axios
 			.get(
 				`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}
@@ -24,7 +25,7 @@ export function useWeatherData() {
 				const weatherData = resp.data
 				setData(weatherData)
 			})
-	}, [])
+	}, [city])
 
 	return [data]
 }
